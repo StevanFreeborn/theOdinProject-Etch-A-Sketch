@@ -25,6 +25,10 @@ window.addEventListener('DOMContentLoaded', () => {
   );
 });
 
+/**
+ * Gets the grid size from the user.
+ * @returns {number} The grid size.
+ */
 function getGridSizeFromUser() {
   let newGridSize;
 
@@ -57,6 +61,11 @@ function getGridSizeFromUser() {
   return parseInt(newGridSize);
 }
 
+/**
+ * Clears the grids container.
+ * @param {HTMLElement} gridsContainer The grids container to clear.
+ * @returns {void}
+ */
 function clearGridsContainer(gridsContainer) {
   gridsContainer.innerHTML = '';
 }
@@ -124,6 +133,10 @@ function addGrid(row, gridNum, gridSize) {
   row.appendChild(grid);
 }
 
+/**
+ * Returns the clear button.
+ * @returns {HTMLElement} The clear button.
+ */
 function getClearButton() {
   return document.querySelector('#clear-button');
 }
@@ -136,4 +149,12 @@ function getGridsContainer() {
   return document.querySelector('#grids-container');
 }
 
-export { addGrid, addRow, getGridsContainer };
+export {
+  addGrid,
+  addRow,
+  buildGridsContainer,
+  clearGridsContainer,
+  getClearButton,
+  getGridSizeFromUser,
+  getGridsContainer,
+};
