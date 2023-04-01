@@ -1,1 +1,2 @@
+export const DEFAULT_GRID_SIZE = 16;
 export const GRIDS_CONTAINER_SIZE_IN_PIXELS = 1000;

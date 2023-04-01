@@ -1,12 +1,65 @@
-import { GRIDS_CONTAINER_SIZE_IN_PIXELS } from './constants.js';
+import {
+  DEFAULT_GRID_SIZE,
+  GRIDS_CONTAINER_SIZE_IN_PIXELS,
+} from './constants.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   const gridContainer = getGridsContainer();
+  const clearButton = getClearButton();
+
+  clearButton.addEventListener('click', () => {
+    const newGridsPerRowAndColumn = getGridSizeFromUser();
+
+    clearGridsContainer(gridContainer);
+
+    buildGridsContainer(
+      gridContainer,
+      GRIDS_CONTAINER_SIZE_IN_PIXELS,
+      newGridsPerRowAndColumn
+    );
+  });
+
   buildGridsContainer(
     gridContainer,
     GRIDS_CONTAINER_SIZE_IN_PIXELS
   );
 });
+
+function getGridSizeFromUser() {
+  let newGridSize;
+
+  do {
+    newGridSize = prompt(
+      'How many grids per row and column would you like in the new grid?'
+    );
+
+    if (newGridSize === null) {
+      return DEFAULT_GRID_SIZE;
+    }
+
+    if (isNaN(newGridSize)) {
+      alert('Please enter a number.');
+    }
+
+    if (newGridSize < 1) {
+      alert('Please enter a number greater than 0.');
+    }
+
+    if (newGridSize > 100) {
+      alert('Please enter a number less than 100.');
+    }
+  } while (
+    isNaN(newGridSize) ||
+    newGridSize < 1 ||
+    newGridSize > 100
+  );
+
+  return parseInt(newGridSize);
+}
+
+function clearGridsContainer(gridsContainer) {
+  gridsContainer.innerHTML = '';
+}
 
 /**
  * Builds the grids container.
@@ -18,7 +71,7 @@ window.addEventListener('DOMContentLoaded', () => {
 function buildGridsContainer(
   gridsContainer,
   gridContainerSizeInPixels,
-  gridsPerRowAndColumn = 16
+  gridsPerRowAndColumn = 10
 ) {
   const totalGrids =
     gridsPerRowAndColumn + gridsPerRowAndColumn;
@@ -69,6 +122,10 @@ function addGrid(row, gridNum, gridSize) {
   });
 
   row.appendChild(grid);
+}
+
+function getClearButton() {
+  return document.querySelector('#clear-button');
 }
 
 /**

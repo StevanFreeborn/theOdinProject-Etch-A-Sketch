@@ -1,5 +1,6 @@
 :root {
   --primary-color: #a70018;
+  --secondary-color: #c99520;
 }
 
 * {
@@ -20,6 +21,22 @@ body {
   justify-content: center;
 }
 
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.btn:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
 #grids-container {
   border-left: 60px solid var(--primary-color);
   border-right: 60px solid var(--primary-color);
@@ -32,10 +49,9 @@ body {
   align-items: center;
   justify-content: center;
   gap: 15px;
-  color: #c99520;
+  color: var(--secondary-color);
   background-color: var(--primary-color);
   width: 100%;
-  max-width: 620px;
   border-radius: 10px 10px 0 0;
   padding: 10px 0;
   font-style: italic;
@@ -61,7 +77,6 @@ body {
   justify-content: space-between;
   background-color: var(--primary-color);
   width: 100%;
-  max-width: 620px;
   padding: 10px;
   border-radius: 0 0 10px 10px;
 }
