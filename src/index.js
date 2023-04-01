@@ -10,6 +10,10 @@ window.addEventListener('DOMContentLoaded', () => {
   clearButton.addEventListener('click', () => {
     const newGridsPerRowAndColumn = getGridSizeFromUser();
 
+    if (newGridsPerRowAndColumn === null) {
+      return;
+    }
+
     clearGridsContainer(gridContainer);
 
     buildGridsContainer(
@@ -38,7 +42,7 @@ function getGridSizeFromUser() {
     );
 
     if (newGridSize === null) {
-      return DEFAULT_GRID_SIZE;
+      return null;
     }
 
     if (isNaN(newGridSize)) {
@@ -80,7 +84,7 @@ function clearGridsContainer(gridsContainer) {
 function buildGridsContainer(
   gridsContainer,
   gridContainerSizeInPixels,
-  gridsPerRowAndColumn = 10
+  gridsPerRowAndColumn = DEFAULT_GRID_SIZE
 ) {
   const totalGrids =
     gridsPerRowAndColumn + gridsPerRowAndColumn;
