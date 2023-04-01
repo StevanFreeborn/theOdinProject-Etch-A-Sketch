@@ -1,20 +1,28 @@
 import { GRIDS_CONTAINER_SIZE_IN_PIXELS } from './constants.js';
 
-window.addEventListener('DOMContentLoaded', () =>
-  buildGridsContainer()
-);
+window.addEventListener('DOMContentLoaded', () => {
+  const gridContainer = getGridsContainer();
+  buildGridsContainer(
+    gridContainer,
+    GRIDS_CONTAINER_SIZE_IN_PIXELS
+  );
+});
 
 /**
  * Builds the grids container.
+ * @param {HTMLElement} gridsContainer The grids container.
+ * @param {number} gridContainerSizeInPixels The grid container size in pixels.
  * @param {number} gridsPerRowAndColumn The number of grids per row and column.
  * @returns {void}
  */
-function buildGridsContainer(gridsPerRowAndColumn = 16) {
-  const gridsContainer = getGridsContainer();
+function buildGridsContainer(
+  gridsContainer,
+  gridContainerSizeInPixels,
+  gridsPerRowAndColumn = 16
+) {
   const totalGrids =
     gridsPerRowAndColumn + gridsPerRowAndColumn;
-  const gridSize =
-    GRIDS_CONTAINER_SIZE_IN_PIXELS / totalGrids;
+  const gridSize = gridContainerSizeInPixels / totalGrids;
   const range = [...Array(gridsPerRowAndColumn).keys()];
 
   for (const num of range) {
