@@ -14,6 +14,11 @@ body {
   height: 100%;
 }
 
+.etch-a-sketch {
+  box-shadow: 0 0 5px #000;
+  border-radius: 10px;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -86,4 +91,5 @@ body {
   height: 50px;
   border-radius: 50%;
   background-color: #fff;
+  box-shadow: 0 0 5px #000;
 }
